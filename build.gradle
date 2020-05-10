@@ -1,0 +1,31 @@
+plugins {
+	id 'org.springframework.boot' version '2.2.7.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id 'java'
+}
+
+group = 'com.mmelo'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	testCompile group: 'io.cucumber', name: 'cucumber-java', version: '5.7.0'
+	testCompile group: 'io.cucumber', name: 'cucumber-junit', version: '5.7.0'
+	testCompile group: 'io.cucumber', name: 'cucumber-spring', version: '5.7.0'
+
+	testCompile group: 'io.rest-assured', name: 'spring-mock-mvc', version: '4.3.0'
+
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+}
+
+test {
+	exclude 'com/mmelo/cucumber/*Defs.class'
+}
